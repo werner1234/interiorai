@@ -1,0 +1,9 @@
+<div class="container">
+  <div>
+    Enter prompt: <input type="text" id="prompt" name="prompt" [(ngModel)]="prompt">
+    <button (click)="generateImage()">Generate</button>
+  </div>
+  <div *ngIf="imageData">
+    <img [src]="imageData" alt="Generated Image">
+  </div>
+</div>
