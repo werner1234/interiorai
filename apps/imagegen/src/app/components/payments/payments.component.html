@@ -1,0 +1,6 @@
+<div class="container">
+  <form [formGroup]="paymentForm" (ngSubmit)="submitPayment()">
+    <input type="text" formControlName="amount" placeholder="Amount">
+    <button type="submit">Pay Now</button>
+  </form>
+</div>

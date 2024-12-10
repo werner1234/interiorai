@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <div>
+      <h3>Input</h3>
+    </div>
+    <div>
+      <h3>Result</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div>
+      <div class="upload" [ngClass]="{'no-border': refImageUrl,'pulsing-dim': loading}"
+           (click)="fileInput.click()" (drop)="onFileDropped($event)" (dragover)="onDragOver($event)">
+        <input type="file" (change)="onFileSelected($event)" hidden #fileInput accept="image/jpeg, image/png">
+        <div *ngIf="!refImageUrl">
+          Click or drag and drop to select your image, or select our
+          <span class="bold" (click)="useDefault($event);">default</span>
+        </div>
+        <img *ngIf="refImageUrl" [src]="refImageUrl" alt="Uploaded Image" class="upload-image">
+      </div>
+    </div>
+    <div>
+      <div class="result">
+        <a *ngIf="resultImageData" [href]="resultImageData" [download]="selectedStyle + '.png'">
+          <img [src]="resultImageData" alt="Generated Image" class="result-image">
+        </a>
+        <div>
+          <div *ngIf="loading">Generating...</div>
+          <div *ngIf="!loading && !resultImageData">
+            <img src="assets/images/blank-room.jpg" class="result-image">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div>
+      <div>
+        <select [(ngModel)]="selectedStyle">
+          <option *ngFor="let style of styleOptions" [value]="style">
+            {{ style }}
+          </option>
+        </select>
+        <button (click)="generateImage()" [disabled]="!refImageUrl">Generate</button>
+      </div>
+    </div>
+    <div>
+      <div *ngIf="resultImageData">
+        <p>Generated image based on the prompt: "{{selectedStyle}}"</p>
+        <p>Click image to download.</p>
+      </div>
+    </div>
+  </div>
+</div>

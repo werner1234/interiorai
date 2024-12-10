@@ -1,0 +1,30 @@
+.menu {
+  display: flex;
+  justify-content: flex-end;
+  padding: 2rem 4vw;
+  align-items: center;
+
+  > div {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
+
+.btn {
+  border: solid 1px black;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+}
+
+.footer {
+  padding: 5vh 4vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+
+  > div {
+    padding-top: 1rem;
+  }
+}
